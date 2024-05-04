@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 /**
  * @OA\Info(
- *     title="Boilerplate Service ",
+ *     title="Automator Service ",
  *     version="0.1"
  * )
  */
