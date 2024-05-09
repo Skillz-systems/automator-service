@@ -66,6 +66,7 @@ jobs:
 
       - name: SSH login
         run: |
+          ssh-keygen -R 185.160.67.60 \
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
