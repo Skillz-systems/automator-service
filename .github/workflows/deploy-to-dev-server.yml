@@ -66,11 +66,14 @@ jobs:
 
       - name: SSH login
         run: |
-          sshpass -p "$SSH_PASSWORD" rsync --delete -va -e 'ssh -p 7822 -o StrictHostKeyChecking=no' \
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          rsync --delete -va -e 'ssh -p 7822 -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no' \
             app database phpunit.xml storage vendor artisan .env tests bootstrap \
             composer.json resources composer.lock routes config package.json \
             public/ public skillz@185.160.67.60:nnpc/api/automator
 
       - name: SSH and effect migration
         run: |
-          sshpass -p "$SSH_PASSWORD" ssh -p 7822 -t skillz@185.160.67.60 "cd nnpc/api/automator && php artisan migrate"
+          ssh -p 7822 -i ~/.ssh/id_rsa -t skillz@185.160.67.60 "cd nnpc/api/automator && php artisan migrate"
