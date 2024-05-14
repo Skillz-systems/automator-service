@@ -22,10 +22,13 @@ class ProcessFlowHistoryJobTest extends TestCase
 
         $data = [
             "formbuilder_data_id" => 1,
-            "customer_id" => 1,
             "user_id" => 1,
             "processflow_id" => 1,
             "processflow_step_id" => 1,
+            "title" => "just a title ",
+            "entity_id" => 1,
+            "entity_type" => "customer",
+
         ];
 
         $job = new ProcessflowHistoryJob($data);
@@ -47,6 +50,9 @@ class ProcessFlowHistoryJobTest extends TestCase
             'user_id' => 1,
             'task_duration' => 1,
             'task_status' => 0,
+            "title" => "just a title ",
+            "entity_id" => 1,
+            "entity_type" => "customer",
         ];
         AutomatorTaskBroadcasterJob::dispatch($request);
 

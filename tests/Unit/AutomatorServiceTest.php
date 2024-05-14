@@ -17,10 +17,13 @@ class AutomatorServiceTest extends TestCase
     {
         $data = [
             "formbuilder_data_id" => 1,
-            "customer_id" => 1,
+            "entity_id" => 1,
             "user_id" => 1,
             "processflow_id" => 1,
             "processflow_step_id" => 1,
+            "title" => "just a title ",
+            "entity_id" => 1,
+            "entity_type" => "customer",
         ];
         $automatorService = (new AutomatorTaskService())->createTask($data);
         $this->assertDatabaseHas('automator_tasks', $data);
