@@ -27,6 +27,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
         \App::bindMethod(ProcessflowHistoryJob::class . '@handle', fn ($job) => $job->handle());
         \App::bindMethod(FormbuilderListenerJob::class . '@handle', fn ($job) => $job->handle());
     }
