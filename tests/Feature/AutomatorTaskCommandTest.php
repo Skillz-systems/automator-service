@@ -15,6 +15,7 @@ class AutomatorTaskCommandTest extends TestCase
     public function test_that_task_is_created_from_command()
     {
         $data = [
+            "title" => "just a title",
             "formbuilder_data_id" => 1,
             "customer_id" => 1,
             "user_id" => 1,

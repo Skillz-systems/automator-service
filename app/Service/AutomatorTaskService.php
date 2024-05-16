@@ -15,7 +15,7 @@ class AutomatorTaskService
      *
      * @param Array $data  holds valid data for the new task.
      *
-     * @return \App\Models\User \ Illuminate\Support\MessageBag The created user model & MessageBag when there is an error.
+     * @return \App\Models\AutomatorTask \ Illuminate\Support\MessageBag The created user model & MessageBag when there is an error.
      */
     public function createTask($data)
     {

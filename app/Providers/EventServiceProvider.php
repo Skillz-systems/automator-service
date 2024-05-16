@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Jobs\Formbuilder\FormbuilderListenerJob;
 use App\Jobs\ProcessflowServiceJobs\ProcessflowHistoryJob;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -18,7 +19,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
-        ],
+        ], 
     ];
 
     /**
@@ -26,7 +27,9 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        
         \App::bindMethod(ProcessflowHistoryJob::class . '@handle', fn ($job) => $job->handle());
+        \App::bindMethod(FormbuilderListenerJob::class . '@handle', fn ($job) => $job->handle());
     }
 
     /**
